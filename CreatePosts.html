@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+	  <title>Create Posts</title>
+	  <style>
+		body {
+			background-color: black;
+		}
+		body * {
+			font-size: 1.05em;
+			color: #000;
+			font-family: "Arial", monospace;
+			text-align: center;
+		}
+		table {
+			width: 40%;
+			margin-left: auto;
+			margin-right: auto;
+			padding-top: 3%;
+		}
+		th {
+			background-color: LightBlue;
+			height: 50px;
+			padding: 20px;
+		}
+
+		td {
+			background-color: LightBlue;
+			padding: 15px;
+		}
+		
+		textarea {
+			overflow-y: scroll;
+			resize: none;
+			margin-top: 10px;
+		}
+	  </style>
+	</head>
+	<body>
+		  
+	  <table>
+		<tr>
+		<th><h1> Create Post! </h1></th>
+		</tr>
+	   
+	   <form id="form" action="CreatePosts.php" method="post">
+	
+		<tr>
+			<td>
+				<label>Username: </label><input type="text" id="username" name="user" style="background-color: white"><br>
+			</td>
+	   </tr>
+	   <tr>
+			<td>
+				<label>Post<br></label><textarea id="post" name="post" rows="8" cols="40" style="background-color: white"></textarea><br>
+			</td>
+	   </tr>
+	   
+	   <tr>
+		<td> <input type="submit" value="Submit"> </td>
+	   </tr>
+	   </form>
+	   
+	 </table>
+	</body>
+</html>

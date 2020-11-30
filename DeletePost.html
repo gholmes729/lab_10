@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+	  <title>Delete Posts</title>
+	  <style>
+		body {
+			background-color: black;
+		}
+		body * {
+			font-size: 1.05em;
+			color: #000;
+			font-family: "Arial", monospace;
+			text-align: center;
+		}
+		table {
+			width: 40%;
+			margin-left: auto;
+			margin-right: auto;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		th {
+			background-color: LightBlue;
+			height: 50px;
+			padding: 20px;
+		}
+
+		td {
+			background-color: white;
+			padding: 15px;
+		}
+		
+		th {
+			border: none;
+			padding: 0px;
+			background-color: LightBlue;
+		}
+		
+		.largeCheck {
+			width: 25px;
+			height: 25px;
+		}
+		
+	  </style>
+	</head>
+	<body>
+		
+		<table cellpadding="10" cellspacing="7.5" style="text-align:center; background-color:LightBlue; margin:auto; margin-top: 5%; width:60%;" border="1px solid black" border-collapse="collapse">
+			<form id="form" action="DeletePost.php" method="post">
+				<tr>
+					<th>Post</th>
+					<th>Author</th> 
+					<th>Delete?</th>
+				</tr>
+				<?php
+					$mysqli = new mysqli("mysql.eecs.ku.edu", "grantholmes", "anooL9uu", "grantholmes");
+					
+					$query = "SELECT content, author_id, post_id FROM Posts";
+					if ($result = $mysqli->query($query)) {
+						while ($row = $result->fetch_assoc()) {
+							echo '<tr>';
+							echo '<td>'.$row["content"].'</td>';
+							echo '<td>'.$row["author_id"].'</td>';
+							echo '<td><input type="checkbox" class="largeCheck" name="'.$row["post_id"].'"></td>';
+							echo '</tr>';
+						}
+						$result->free();
+					}
+
+					$mysqli->close();
+				?>
+			<tr>
+				<td colspan="3" style="border: none; background-color: LightBlue; padding: 0px;"> <input type="submit" value="Submit">
+					</form>
+					<form style="padding-top: 10px" action="https://people.eecs.ku.edu/~g569h991/lab_10/AdminHome.html">
+						<input type="submit" value="Home">
+					</form>
+				</td>
+			</tr>
+		</table>
+		
+	</body>
+</html>
